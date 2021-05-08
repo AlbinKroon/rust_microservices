@@ -2,11 +2,25 @@
 
 #[macro_use] extern crate rocket;
 
+use std::io::Read;
+
+use rocket::response::content::Json;
+
 #[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
+fn index() -> Json<String> {
+    let mut response = String::new();
+    reqwest::blocking::get("https://172.18.0.2:5000/")
+        .expect("Something went wrong")
+        .read_to_string(&mut response)
+        .expect("Got no response");
+    Json(response)
+}
+
+#[get("/health")]
+fn health() -> &'static str {
+    "OK"
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite().mount("/", routes![index, health]).launch();
 }

@@ -1,0 +1,11 @@
+cargo-features = ["edition2021"]
+[package]
+name = "facade"
+version = "0.0.1"
+authors = ["Albin Kroon <albkro94@hotmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = "0.4.7"

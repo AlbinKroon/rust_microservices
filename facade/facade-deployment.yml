@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: facade-deployment
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: facade
+  template:
+    metadata:
+      labels:
+        app: facade
+    spec:
+      containers:
+        - name: facade-container
+          image: facade:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000

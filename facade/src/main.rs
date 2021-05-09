@@ -9,11 +9,11 @@ use rocket::response::content::Json;
 #[get("/")]
 fn index() -> Json<String> {
     let mut response = String::new();
-    reqwest::blocking::get("https://172.18.0.2:5000/")
+    reqwest::blocking::get("http://172.18.0.2:8000/")
         .expect("Something went wrong")
         .read_to_string(&mut response)
         .expect("Got no response");
-    Json(response)
+    Json(format!("{{\"response\":\"{}\"}}", response))
 }
 
 #[get("/health")]

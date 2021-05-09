@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: repository-deployment
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: repository
+  template:
+    metadata:
+      labels:
+        app: repository
+    spec:
+      containers:
+        - name: repository-container
+          image: repository:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000

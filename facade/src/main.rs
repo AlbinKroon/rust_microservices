@@ -9,7 +9,7 @@ use rocket::response::content::Json;
 #[get("/")]
 fn index() -> Json<String> {
     let mut response = String::new();
-    reqwest::blocking::get("http://172.18.0.2:8000/")
+    reqwest::blocking::get("localhost:30463/")
         .expect("Something went wrong")
         .read_to_string(&mut response)
         .expect("Got no response");

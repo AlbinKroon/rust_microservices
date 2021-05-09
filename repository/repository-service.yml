@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: facade-service
+  name: repository-service
 spec:
   type: NodePort
   selector:
-    app: facade
+    app: repository
   ports:
     - protocol: TCP
       port: 80
